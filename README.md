@@ -1,3 +1,3 @@
 # Run tests with the following command : 
 
-npm run test --runInBand --detectOpenHandles
+npm run test
