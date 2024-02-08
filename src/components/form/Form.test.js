@@ -415,8 +415,9 @@ describe('check LocalStorage', () => {
         expect(localStorage.getItem('Birthdate:')).toBe('1996-08-25');
         expect(localStorage.getItem('City:')).toBe('Antibes');
         expect(localStorage.getItem('Zipcode:')).toBe('06600');
+        expect(localStorage.getItem('Form status:')).toBe('Le formulaire a été soumis avec succès');
     });
-
+    
 });
 
 // ALERT

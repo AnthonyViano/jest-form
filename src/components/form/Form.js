@@ -167,24 +167,24 @@ const Form = () => {
     const formIsValid = validateForm(data);
 
     // If form is invalid, do not submit data
-    if (formIsValid) {
-      window.localStorage.setItem('Lastname:', lastname);
-      window.localStorage.setItem('Firstname:', firstname);
-      window.localStorage.setItem('Email:', email);
-      window.localStorage.setItem('Birthdate:', birthdate);
-      window.localStorage.setItem('City:', city);
-      window.localStorage.setItem('Zipcode:', zipcode);
 
-      setLastname('');
-      setFirstname('');
-      setEmail('');
-      setBirthdate('');
-      setCity('');
-      setZipcode('');
-      setIsFormValid(false);
+    window.localStorage.setItem('Lastname:', lastname);
+    window.localStorage.setItem('Firstname:', firstname);
+    window.localStorage.setItem('Email:', email);
+    window.localStorage.setItem('Birthdate:', birthdate);
+    window.localStorage.setItem('City:', city);
+    window.localStorage.setItem('Zipcode:', zipcode);
+    window.localStorage.setItem('Form status:', 'Le formulaire a été soumis avec succès');
 
-      window.alert('Le formulaire a été soumis avec succès');
-    }
+    setLastname('');
+    setFirstname('');
+    setEmail('');
+    setBirthdate('');
+    setCity('');
+    setZipcode('');
+    setIsFormValid(false);
+
+    window.alert('Le formulaire a été soumis avec succès');
 
   };
 
