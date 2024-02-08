@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Form.css';
+
 
 const Form = () => {
   const [lastname, setLastname] = useState('');
@@ -142,12 +142,12 @@ const Form = () => {
     const isZipcodeValid = /^\d{5}$/.test(zipcode) && zipcode.length === 5;
   
     // Update error status
-    // setLastnameError(isValidLastname ? '' : 'Nom de famille non valide');
-    // setFirstnameError(isFirstnameValid ? '' : 'Prénom non valide');
-    // setEmailError(isEmailValid ? '' : 'Adresse e-mail non valide');
-    // setBirthdateError(isBirthdateValid ? '' : 'L\'âge doit être supérieur à 18 ans');
-    // setCityError(isValidCity ? '' : 'Ville non valide');
-    // setZipcodeError(isZipcodeValid ? '' : 'Format de code postal invalide (France : XXXXX)');
+    setLastnameError(isValidLastname ? '' : 'Nom de famille non valide');
+    setFirstnameError(isFirstnameValid ? '' : 'Prénom non valide');
+    setEmailError(isEmailValid ? '' : 'Adresse e-mail non valide');
+    setBirthdateError(isBirthdateValid ? '' : 'L\'âge doit être supérieur à 18 ans');
+    setCityError(isValidCity ? '' : 'Ville non valide');
+    setZipcodeError(isZipcodeValid ? '' : 'Format de code postal invalide (France : XXXXX)');
   
     // Check that all fields are valid
     const formIsValid =
@@ -189,38 +189,38 @@ const Form = () => {
   };
 
   return (
-    <form className="user-form" data-testid="form" onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label className="form-label">Nom : </label>
-        <input className="form-input" data-testid="lastname" type="text" value={lastname} onChange={handleLastnameChange} placeholder='Entrez votre nom de famille' />
-        {lastnameError && <span className="error-message" data-testid="lastname-error" style={{ color: 'red' }}>{lastnameError}</span>}
+    <form data-testid="form" onSubmit={handleSubmit}>
+      <div>
+        <label>Lastname: </label>
+        <input data-testid="lastname" type="text" value={lastname} onChange={handleLastnameChange} />
+        {lastnameError && <span data-testid="lastname-error" style={{ color: 'red' }}>{lastnameError}</span>}
       </div>
-      <div className="form-group">
-        <label className="form-label">Prénom : </label>
-        <input className="form-input" data-testid="firstname" type="text" value={firstname} onChange={handleFirstnameChange} placeholder='Entrez votre prénom' />
-        {firstnameError && <span className="error-message" data-testid="firstname-error" style={{ color: 'red' }}>{firstnameError}</span>}
+      <div>
+        <label>Prénom: </label>
+        <input data-testid="firstname" type="text" value={firstname} onChange={handleFirstnameChange} />
+        {firstnameError && <span data-testid="firstname-error" style={{ color: 'red' }}>{firstnameError}</span>}
       </div>
-      <div className="form-group">
-        <label className="form-label">Adresse e-mail : </label>
-        <input className="form-input" data-testid="email" type="text" value={email} onChange={handleEmailChange} placeholder='Entrez votre adresse e-mail' />
-        {emailError && <span className="error-message" data-testid="email-error" style={{ color: 'red' }}>{emailError}</span>}
+      <div>
+        <label>Adresse e-mail: </label>
+        <input data-testid="email" type="text" value={email} onChange={handleEmailChange} />
+        {emailError && <span data-testid="email-error" style={{ color: 'red' }}>{emailError}</span>}
       </div>
-      <div className="form-group">
-        <label className="form-label">Date de naissance : </label>
-        <input className="form-input" data-testid="birthdate" type="date" value={birthdate} onChange={handleBirthdateChange} />
-        {birthdateError && <span className="error-message" data-testid="birthdate-error" style={{ color: 'red' }}>{birthdateError}</span>}
+      <div>
+        <label>Date de naissance: </label>
+        <input data-testid="birthdate" type="date" value={birthdate} onChange={handleBirthdateChange} />
+        {birthdateError && <span data-testid="birthdate-error" style={{ color: 'red' }}>{birthdateError}</span>}
       </div>
-      <div className="form-group">
-        <label className="form-label">Ville : </label>
-        <input className="form-input" data-testid="city" type="text" value={city} onChange={handleCityChange} placeholder='Entrez le nom de votre ville' />
-        {cityError && <span className="error-message" data-testid="city-error" style={{ color: 'red' }}>{cityError}</span>}
+      <div>
+        <label>Ville: </label>
+        <input data-testid="city" type="text" value={city} onChange={handleCityChange} />
+        {cityError && <span data-testid="city-error" style={{ color: 'red' }}>{cityError}</span>}
       </div>
-      <div className="form-group">
-        <label className="form-label">Code postal : </label>
-        <input className="form-input" data-testid="zipcode" type="number" value={zipcode} onChange={handleZipcodeChange} placeholder='Entrez le code postal de votre ville [XXXXX]' />
-        {zipcodeError && <span className="error-message" data-testid="zipcode-error" style={{ color: 'red' }}>{zipcodeError}</span>}
+      <div>
+        <label>Code postal: </label>
+        <input data-testid="zipcode" type="number" value={zipcode} onChange={handleZipcodeChange} />
+        {zipcodeError && <span data-testid="zipcode-error" style={{ color: 'red' }}>{zipcodeError}</span>}
       </div>
-      <button data-testid="submit" type="submit" className={`submit-button ${isFormValid ? 'valid' : ''}`} disabled={!isFormValid}>
+      <button data-testid="submit" type="submit" style={{ color: isFormValid ? 'green' : 'red' }} disabled={!isFormValid}>
         Soumettre
       </button>
     </form>

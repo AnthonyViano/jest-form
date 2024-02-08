@@ -328,6 +328,16 @@ describe('check Form', () => {
         expect(form).toBeValid();
     });
 
+    it('check if all TextField are empty after submitted', () => {
+        fireEvent.click(button);
+        expect(lastname.value).toBe('');
+        expect(firstname.value).toBe('');
+        expect(email.value).toBe('');
+        expect(birthdate.value).toBe('');
+        expect(city.value).toBe('');
+        expect(zipcode.value).toBe('');
+    });
+
     it('check if Form is wrong - lastname', () => {
         fireEvent.change(lastname, { target: { value: '' } });
         fireEvent.click(button);
