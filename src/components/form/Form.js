@@ -1,61 +1,61 @@
 import React, { useState } from 'react';
 
 const Form = () => {
-  const [nom, setNom] = useState('');
-  const [prenom, setPrenom] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [firstname, setFirstname] = useState('');
   const [email, setEmail] = useState('');
-  const [dateNaissance, setDateNaissance] = useState('');
-  const [ville, setVille] = useState('');
-  const [codePostal, setCodePostal] = useState('');
+  const [birthdate, setBirthdate] = useState('');
+  const [city, setCity] = useState('');
+  const [zipcode, setZipcode] = useState('');
 
-  const [nomError, setNomError] = useState('');
-  const [prenomError, setPrenomError] = useState('');
+  const [lastnameError, setLastnameError] = useState('');
+  const [firstnameError, setFirstnameError] = useState('');
   const [emailError, setEmailError] = useState('');
-  const [dateNaissanceError, setDateNaissanceError] = useState('');
-  const [villeError, setVilleError] = useState('');
-  const [codePostalError, setCodePostalError] = useState('');
+  const [birthdateError, setBirthdateError] = useState('');
+  const [cityError, setCityError] = useState('');
+  const [zipcodeError, setZipcodeError] = useState('');
 
   const [isFormValid, setIsFormValid] = useState(false);
 
-  const handleNomChange = (e) => {
-    const newNom = e.target.value;
+  const handleLastnameChange = (e) => {
+    const newLastname = e.target.value;
 
-    const isValidNom = /^[a-zA-ZÀ-ÖØ-öø-ÿ-]+$/.test(newNom);
+    const isValidLastname = /^[a-zA-ZÀ-ÖØ-öø-ÿ-]+$/.test(newLastname);
 
-    setNom(newNom);
+    setLastname(newLastname);
 
-    if (!isValidNom) {
-        setNomError('Nom de famille non valide');
+    if (!isValidLastname) {
+        setLastnameError('Nom de famille non valide');
     } else {
-        setNomError('');
+        setLastnameError('');
     }
 
-    let data = {nom: e.target.value, prenom, email, dateNaissance, ville, codePostal};
+    let data = {lastname: e.target.value, firstname, email, birthdate, city, zipcode};
 
     validateForm(data);
   };
 
-  const handlePrenomChange = (e) => {
-    const newPrenom = e.target.value;
+  const handleFirstnameChange = (e) => {
+    const newFirstname = e.target.value;
 
-    const isValidPrenom = /^[a-zA-ZÀ-ÖØ-öø-ÿ-]+$/.test(newPrenom);
+    const isValidFirstname = /^[a-zA-ZÀ-ÖØ-öø-ÿ-]+$/.test(newFirstname);
 
-    setPrenom(newPrenom);
+    setFirstname(newFirstname);
 
-    if (!isValidPrenom) {
-        setPrenomError('Prénom non valide');
+    if (!isValidFirstname) {
+        setFirstnameError('Prénom non valide');
     } else {
-        setPrenomError('');
+        setFirstnameError('');
     }
 
-    let data = {nom, prenom: e.target.value, email, dateNaissance, ville, codePostal};
+    let data = {lastname, firstname: e.target.value, email, birthdate, city, zipcode};
 
     validateForm(data);
   };
 
   const handleEmailChange = (e) => {
     const newEmail = e.target.value;
-    // Vérification de l'adresse e-mail avec une expression régulière simple
+    // Checking e-mail address with a simple regular expression
     const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newEmail);
 
     setEmail(newEmail);
@@ -66,91 +66,91 @@ const Form = () => {
       setEmailError('');
     }
 
-    let data = {nom, prenom, email: newEmail, dateNaissance, ville, codePostal};
+    let data = {lastname, firstname, email: newEmail, birthdate, city, zipcode};
 
     validateForm(data);
   };
 
-  const handleDateNaissanceChange = (e) => {
-    const newDateNaissance = e.target.value;
-    // Vérification de l'âge (supérieur à 18 ans)
+  const handleBirthdateChange = (e) => {
+    const newBirthdate = e.target.value;
+    // Age verification (over 18)
     const today = new Date();
-    const birthDate = new Date(newDateNaissance);
+    const birthDate = new Date(newBirthdate);
     const age = today.getFullYear() - birthDate.getFullYear();
 
-    setDateNaissance(newDateNaissance);
+    setBirthdate(newBirthdate);
 
     if (age < 18) {
-      setDateNaissanceError('L\'âge doit être supérieur à 18 ans');
+      setBirthdateError('L\'âge doit être supérieur à 18 ans');
     } else {
-      setDateNaissanceError('');
+      setBirthdateError('');
     }
 
-    let data = {nom, prenom, email, dateNaissance: newDateNaissance, ville, codePostal};
+    let data = {lastname, firstname, email, birthdate: newBirthdate, city, zipcode};
 
     validateForm(data);
   };
 
-  const handleVilleChange = (e) => {
-    const newVille = e.target.value;
+  const handleCityChange = (e) => {
+    const newCity = e.target.value;
 
-    const isValidVille = /^[a-zA-ZÀ-ÖØ-öø-ÿ-]+$/.test(newVille);
+    const isValidCity = /^[a-zA-ZÀ-ÖØ-öø-ÿ-]+$/.test(newCity);
 
-    setVille(newVille);
+    setCity(newCity);
 
-    if (!isValidVille) {
-        setVilleError('Ville non valide');
+    if (!isValidCity) {
+        setCityError('Ville non valide');
     } else {
-        setVilleError('');
+        setCityError('');
     }
 
-    let data = {nom, prenom, email, dateNaissance, ville: e.target.value, codePostal};
+    let data = {lastname, firstname, email, birthdate, city: e.target.value, zipcode};
 
     validateForm(data);
   };
 
-  const handleCodePostalChange = (e) => {
-    const newCodePostal = e.target.value;
-    // Vérification du format du code postal (pour la France)
-    const isValidCodePostal = /^\d{5}$/.test(newCodePostal) && newCodePostal.length === 5;
+  const handleZipcodeChange = (e) => {
+    const newZipcode = e.target.value;
+    // Check zip code format (for France)
+    const isValidZipcode = /^\d{5}$/.test(newZipcode) && newZipcode.length === 5;
 
-    setCodePostal(newCodePostal);
+    setZipcode(newZipcode);
 
-    if (!isValidCodePostal) {
-      setCodePostalError('Format de code postal invalide (France : XXXXX)');
+    if (!isValidZipcode) {
+      setZipcodeError('Format de code postal invalide (France : XXXXX)');
     } else {
-      setCodePostalError('');
+      setZipcodeError('');
     }
 
-    let data = {nom, prenom, email, dateNaissance, ville, codePostal: newCodePostal};
+    let data = {lastname, firstname, email, birthdate, city, zipcode: newZipcode};
 
     validateForm(data);
   };
 
   const validateForm = (data) => {
-    let {nom, prenom, email, dateNaissance, ville, codePostal} = data;
-    // Vérifiez tous les champs ici
-    const isValidNom = /^[a-zA-ZÀ-ÖØ-öø-ÿ-]+$/.test(nom);
-    const isPrenomValid = /^[a-zA-ZÀ-ÖØ-öø-ÿ-]+$/.test(prenom);
+    let {lastname, firstname, email, birthdate, city, zipcode} = data;
+    // Check all fields here
+    const isValidLastname = /^[a-zA-ZÀ-ÖØ-öø-ÿ-]+$/.test(lastname);
+    const isFirstnameValid = /^[a-zA-ZÀ-ÖØ-öø-ÿ-]+$/.test(firstname);
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     const today = new Date();
-    const birthDate = new Date(dateNaissance);
+    const birthDate = new Date(birthdate);
     const age = today.getFullYear() - birthDate.getFullYear();
-    const isDateValid = age >= 18;
-    const isValidVille = /^[a-zA-ZÀ-ÖØ-öø-ÿ-]+$/.test(ville);
-    const isCodePostalValid = /^\d{5}$/.test(codePostal) && codePostal.length === 5;
+    const isBirthdateValid = age >= 18;
+    const isValidCity = /^[a-zA-ZÀ-ÖØ-öø-ÿ-]+$/.test(city);
+    const isZipcodeValid = /^\d{5}$/.test(zipcode) && zipcode.length === 5;
   
-    // Mettez à jour les états d'erreur
-    setNomError(isValidNom ? '' : 'Nom de famille non valide');
-    setPrenomError(isPrenomValid ? '' : 'Prénom non valide');
+    // Update error status
+    setLastnameError(isValidLastname ? '' : 'Nom de famille non valide');
+    setFirstnameError(isFirstnameValid ? '' : 'Prénom non valide');
     setEmailError(isEmailValid ? '' : 'Adresse e-mail non valide');
-    setDateNaissanceError(isDateValid ? '' : 'L\'âge doit être supérieur à 18 ans');
-    setVilleError(isValidVille ? '' : 'Ville non valide');
-    setCodePostalError(isCodePostalValid ? '' : 'Format de code postal invalide (France : XXXXX)');
+    setBirthdateError(isBirthdateValid ? '' : 'L\'âge doit être supérieur à 18 ans');
+    setCityError(isValidCity ? '' : 'Ville non valide');
+    setZipcodeError(isZipcodeValid ? '' : 'Format de code postal invalide (France : XXXXX)');
   
-    // Vérifiez si tous les champs sont valides
+    // Check that all fields are valid
     const formIsValid =
-      isEmailValid && isDateValid && isCodePostalValid && isValidNom && isPrenomValid && isValidVille;
+      isEmailValid && isBirthdateValid && isZipcodeValid && isValidLastname && isFirstnameValid && isValidCity;
   
     setIsFormValid(formIsValid);
   
@@ -160,31 +160,31 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    let data = {nom, prenom, email, dateNaissance, ville, codePostal};
+    let data = {lastname, firstname, email, birthdate, city, zipcode};
   
-    // Validez le formulaire avant de soumettre
+    // Validate the form before submitting
     const formIsValid = validateForm(data);
 
-    // Si le formulaire n'est pas valide, ne soumettez pas les données
+    // If form is invalid, do not submit data
     if (!formIsValid) {
       console.error('Le formulaire contient des erreurs');
       return;
     }
     else {
 
-      window.localStorage.setItem('Nom:', nom);
-      window.localStorage.setItem('Prénom:', prenom);
-      window.localStorage.setItem('Adresse e-mail:', email);
-      window.localStorage.setItem('Date de naissance:', dateNaissance);
-      window.localStorage.setItem('Ville:', ville);
-      window.localStorage.setItem('Code postal:', codePostal);
+      window.localStorage.setItem('Lastname:', lastname);
+      window.localStorage.setItem('Firstname:', firstname);
+      window.localStorage.setItem('Email:', email);
+      window.localStorage.setItem('Birthdate:', birthdate);
+      window.localStorage.setItem('City:', city);
+      window.localStorage.setItem('Code postal:', zipcode);
 
-      setNom('');
-      setPrenom('');
+      setLastname('');
+      setFirstname('');
       setEmail('');
-      setDateNaissance('');
-      setVille('');
-      setCodePostal('');
+      setBirthdate('');
+      setCity('');
+      setZipcode('');
       setIsFormValid(false);
 
       window.alert('Le formulaire a été soumis avec succès');
@@ -195,14 +195,14 @@ const Form = () => {
   return (
     <form data-testid="form" onSubmit={handleSubmit}>
       <div>
-        <label>Nom: </label>
-        <input data-testid="lastname" type="text" value={nom} onChange={handleNomChange} />
-        {nomError && <span data-testid="lastname-error" style={{ color: 'red' }}>{nomError}</span>}
+        <label>Lastname: </label>
+        <input data-testid="lastname" type="text" value={lastname} onChange={handleLastnameChange} />
+        {lastnameError && <span data-testid="lastname-error" style={{ color: 'red' }}>{lastnameError}</span>}
       </div>
       <div>
         <label>Prénom: </label>
-        <input data-testid="firstname" type="text" value={prenom} onChange={handlePrenomChange} />
-        {prenomError && <span data-testid="firstname-error" style={{ color: 'red' }}>{prenomError}</span>}
+        <input data-testid="firstname" type="text" value={firstname} onChange={handleFirstnameChange} />
+        {firstnameError && <span data-testid="firstname-error" style={{ color: 'red' }}>{firstnameError}</span>}
       </div>
       <div>
         <label>Adresse e-mail: </label>
@@ -211,18 +211,18 @@ const Form = () => {
       </div>
       <div>
         <label>Date de naissance: </label>
-        <input data-testid="birthdate" type="date" value={dateNaissance} onChange={handleDateNaissanceChange} />
-        {dateNaissanceError && <span data-testid="birthdate-error" style={{ color: 'red' }}>{dateNaissanceError}</span>}
+        <input data-testid="birthdate" type="date" value={birthdate} onChange={handleBirthdateChange} />
+        {birthdateError && <span data-testid="birthdate-error" style={{ color: 'red' }}>{birthdateError}</span>}
       </div>
       <div>
         <label>Ville: </label>
-        <input data-testid="city" type="text" value={ville} onChange={handleVilleChange} />
-        {villeError && <span data-testid="city-error" style={{ color: 'red' }}>{villeError}</span>}
+        <input data-testid="city" type="text" value={city} onChange={handleCityChange} />
+        {cityError && <span data-testid="city-error" style={{ color: 'red' }}>{cityError}</span>}
       </div>
       <div>
         <label>Code postal: </label>
-        <input data-testid="zipcode" type="number" value={codePostal} onChange={handleCodePostalChange} />
-        {codePostalError && <span data-testid="zipcode-error" style={{ color: 'red' }}>{codePostalError}</span>}
+        <input data-testid="zipcode" type="number" value={zipcode} onChange={handleZipcodeChange} />
+        {zipcodeError && <span data-testid="zipcode-error" style={{ color: 'red' }}>{zipcodeError}</span>}
       </div>
       <button data-testid="submit" type="submit" style={{ color: isFormValid ? 'green' : 'red' }} disabled={!isFormValid}>
         Soumettre

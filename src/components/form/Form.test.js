@@ -399,12 +399,12 @@ describe('check LocalStorage', () => {
 
     it('check if LocalStorage is filled', () => {
         fireEvent.click(button);
-        expect(localStorage.getItem('Nom:')).toBe('Viano');
-        expect(localStorage.getItem('Prénom:')).toBe('Anthony');
-        expect(localStorage.getItem('Adresse e-mail:')).toBe('anthonyviano@gmail.com');
-        expect(localStorage.getItem('Date de naissance:')).toBe('1996-08-25');
-        expect(localStorage.getItem('Ville:')).toBe('Antibes');
-        expect(localStorage.getItem('Code postal:')).toBe('06600');
+        expect(localStorage.getItem('Lastname:')).toBe('Viano');
+        expect(localStorage.getItem('Firstname:')).toBe('Anthony');
+        expect(localStorage.getItem('Email:')).toBe('anthonyviano@gmail.com');
+        expect(localStorage.getItem('Birthdate:')).toBe('1996-08-25');
+        expect(localStorage.getItem('City:')).toBe('Antibes');
+        expect(localStorage.getItem('Zipcode:')).toBe('06600');
     });
 
 });
