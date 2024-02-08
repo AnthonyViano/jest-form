@@ -141,6 +141,14 @@ const Form = () => {
     const isValidCity = /^[a-zA-ZÀ-ÖØ-öø-ÿ-]+$/.test(city);
     const isZipcodeValid = /^\d{5}$/.test(zipcode) && zipcode.length === 5;
   
+    // Update error status
+    // setLastnameError(isValidLastname ? '' : 'Nom de famille non valide');
+    // setFirstnameError(isFirstnameValid ? '' : 'Prénom non valide');
+    // setEmailError(isEmailValid ? '' : 'Adresse e-mail non valide');
+    setBirthdateError(isBirthdateValid ? '' : 'L\'âge doit être supérieur à 18 ans');
+    // setCityError(isValidCity ? '' : 'Ville non valide');
+    // setZipcodeError(isZipcodeValid ? '' : 'Format de code postal invalide (France : XXXXX)');
+  
     // Check that all fields are valid
     const formIsValid =
       isEmailValid && isBirthdateValid && isZipcodeValid && isValidLastname && isFirstnameValid && isValidCity;
@@ -177,6 +185,7 @@ const Form = () => {
     setIsFormValid(false);
 
     window.alert('Le formulaire a été soumis avec succès');
+
 
   };
 
