@@ -166,12 +166,7 @@ const Form = () => {
     const formIsValid = validateForm(data);
 
     // If form is invalid, do not submit data
-    if (!formIsValid) {
-      console.error('Le formulaire contient des erreurs');
-      return;
-    }
-    else {
-
+    if (formIsValid) {
       window.localStorage.setItem('Lastname:', lastname);
       window.localStorage.setItem('Firstname:', firstname);
       window.localStorage.setItem('Email:', email);
