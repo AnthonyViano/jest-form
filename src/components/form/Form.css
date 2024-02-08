@@ -39,11 +39,11 @@
   }
   
   .submit-button:disabled {
-    background-color: lightgray;
+    color: red;
     cursor: not-allowed;
   }
   
   .submit-button.valid {
-    background-color: green;
+    color: green;
   }
   
