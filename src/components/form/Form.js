@@ -177,7 +177,7 @@ const Form = () => {
       window.localStorage.setItem('Email:', email);
       window.localStorage.setItem('Birthdate:', birthdate);
       window.localStorage.setItem('City:', city);
-      window.localStorage.setItem('Code postal:', zipcode);
+      window.localStorage.setItem('Zipcode:', zipcode);
 
       setLastname('');
       setFirstname('');
