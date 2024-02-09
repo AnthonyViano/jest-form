@@ -145,7 +145,7 @@ const Form = () => {
     // setLastnameError(isValidLastname ? '' : 'Nom de famille non valide');
     // setFirstnameError(isFirstnameValid ? '' : 'Prénom non valide');
     // setEmailError(isEmailValid ? '' : 'Adresse e-mail non valide');
-    setBirthdateError(isBirthdateValid ? '' : 'L\'âge doit être supérieur à 18 ans');
+    // setBirthdateError(isBirthdateValid ? '' : 'L\'âge doit être supérieur à 18 ans');
     // setCityError(isValidCity ? '' : 'Ville non valide');
     // setZipcodeError(isZipcodeValid ? '' : 'Format de code postal invalide (France : XXXXX)');
   
