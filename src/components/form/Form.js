@@ -18,6 +18,11 @@ const Form = () => {
 
   const [isFormValid, setIsFormValid] = useState(false);
 
+  /**
+   * Check if the last name is valid with a simple regular expression
+   * @param {any} e event object
+   * @returns {void}
+   */
   const handleLastnameChange = (e) => {
     const newLastname = e.target.value;
 
@@ -36,6 +41,11 @@ const Form = () => {
     validateForm(data);
   };
 
+  /**
+   * Check if the first name is valid with a simple regular expression
+   * @param {*} e event object
+   * @returns {void}
+   */
   const handleFirstnameChange = (e) => {
     const newFirstname = e.target.value;
 
@@ -54,6 +64,11 @@ const Form = () => {
     validateForm(data);
   };
 
+  /**
+   * Check if the e-mail address is valid with a simple regular expression
+   * @param {*} e event object
+   * @returns {void}
+   */
   const handleEmailChange = (e) => {
     const newEmail = e.target.value;
     // Checking e-mail address with a simple regular expression
@@ -72,6 +87,11 @@ const Form = () => {
     validateForm(data);
   };
 
+  /**
+   * Check if the birthdate is valid (age over 18)
+   * @param {*} e event object
+   * @returns {void}
+   */
   const handleBirthdateChange = (e) => {
     const newBirthdate = e.target.value;
     // Age verification (over 18)
@@ -92,6 +112,11 @@ const Form = () => {
     validateForm(data);
   };
 
+  /**
+   * Check if the city is valid with a simple regular expression
+   * @param {*} e event object
+   * @returns {void}
+   */
   const handleCityChange = (e) => {
     const newCity = e.target.value;
 
@@ -110,6 +135,11 @@ const Form = () => {
     validateForm(data);
   };
 
+  /**
+   * Check if the zip code is valid with a simple regular expression
+   * @param {*} e event object
+   * @returns {void}
+   */
   const handleZipcodeChange = (e) => {
     const newZipcode = e.target.value;
     // Check zip code format (for France)
@@ -128,6 +158,11 @@ const Form = () => {
     validateForm(data);
   };
 
+  /**
+   * Validate the form with all fields
+   * @param {*} data list of fields
+   * @returns {boolean} form status
+   */
   const validateForm = (data) => {
     let {lastname, firstname, email, birthdate, city, zipcode} = data;
     // Check all fields here
@@ -158,6 +193,11 @@ const Form = () => {
     return formIsValid;
   };
 
+  /**
+   * Check if the form is valid before submitting
+   * @param {*} e event object
+   * @returns {void}
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
 
