@@ -16,7 +16,7 @@ return (
       // error
       id="outlined-error-helper-text"
       label={label}
-      helperText={}
+      helperText={""}
       placeholder={"Entrer votre " + label}
       onChange={handleNameChange}
     />
