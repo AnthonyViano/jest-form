@@ -1,11 +1,14 @@
 import './App.css';
-import Form from './components/form/Form';
+import React, { useState } from 'react';
+import Form from './components/Form/index';
 
 function App() {
+
+  const [content , setContent] = useState('');
+
   return (
       <div>
-        <p>FORMULAIRE</p>
-        <Form />
+        <Form content={content} setContent={setContent} />
       </div>
   );
 }
