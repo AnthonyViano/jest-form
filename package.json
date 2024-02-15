@@ -2,6 +2,7 @@
   "name": "exo2",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://anthonyviano.github.io/jest-form/",
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
@@ -18,7 +19,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage --watchAll",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -41,6 +44,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.23.9",
     "babel-jest": "^29.7.0",
+    "gh-pages": "^6.1.1",
     "jest": "^27.5.1",
     "react-test-renderer": "^18.2.0"
   }
