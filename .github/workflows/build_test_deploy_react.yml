@@ -51,3 +51,6 @@ jobs:
     permissions:
       pages: write # to deploy to Pages
       id-token: write # to verify the deployment originates from an appropriate source
+
+    # Add a dependency to the build job
+    needs: build_test
