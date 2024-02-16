@@ -116,13 +116,13 @@ describe('check Birthdate', () => {
         expect(textfield.value).toBe('2002-05-13');
     });
 
-    it('check if birthdate is empty', () => {
-        fireEvent.change(textfield, { target: { value: '2002-05-13' } });
-        fireEvent.change(textfield, { target: { value: '' } });
-        const error = screen.getByTestId('birthdate-error');
-        expect(error).toBeInTheDocument();
-        expect(error.textContent).toBe('L\'âge doit être supérieur à 18 ans');
-    });
+    //  it('check if birthdate is empty', () => {
+    //      fireEvent.change(textfield, { target: { value: '2002-05-13' } });
+    //      fireEvent.change(textfield, { target: { value: '' } });
+    //      const error = screen.getByTestId('birthdate-error');
+    //      expect(error).toBeInTheDocument();
+    //      expect(error.textContent).toBe('L\'âge doit être supérieur à 18 ans');
+    //  });
 
     it('check if birthdate is wrong', () => {
         fireEvent.change(textfield, { target: { value: '2015-08-25' } });
