@@ -204,7 +204,7 @@ const Form = () => {
     let data = {lastname, firstname, email, birthdate, city, zipcode};
   
     // Validate the form before submitting
-    const formIsValid = validateForm(data);
+    validateForm(data);
 
     // If form is invalid, do not submit data
 
