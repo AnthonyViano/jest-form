@@ -37,7 +37,7 @@ jobs:
           # Upload entire repository
           path: build
           if-no-files-found: error
-      - name: Tag the commit
+      - name: Tag the commit 
         run: |
           npm view version
           git tag -a v0.1.0-${{ github.run_id }}.${{ github.run_number }}.${{ github.run_attempt }} -m "Build ${{ github.run_id }}.${{ github.run_number }}.${{ github.run_attempt }}"
