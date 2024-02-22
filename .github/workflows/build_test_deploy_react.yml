@@ -39,8 +39,6 @@ jobs:
           if-no-files-found: error
       - name: Tag the commit 
         run: |
-          git config --global user.email "anthonyviano@gmail.com"
-          git config --global user.name "AnthonyViano"
           npm view version
           git tag -a v0.1.0-${{ github.run_id }}.${{ github.run_number }}.${{ github.run_attempt }} -m "Build ${{ github.run_id }}.${{ github.run_number }}.${{ github.run_attempt }}"
           npm version from-git
